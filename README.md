@@ -28,7 +28,7 @@
 
 目前新版本一键脚本：
 ```
-wget -N --no-check-certificate https://raw.githubusercontents.com/ygkkkyb/CFwarp/main/CFwarp.sh && bash CFwarp.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/Xiaoshen663/CFwarp/main/CFwarp.sh && bash CFwarp.sh
 ```
 
 进入脚本快捷方式 ```bash CFwarp.sh```
