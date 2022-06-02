@@ -661,16 +661,16 @@ else
 red "未复制privateKey或Address，恢复使用WARP普通账户" && cp -f /etc/wireguard/wgcf-profile.conf /etc/wireguard/wgcf.conf >/dev/null 2>&1 && systemctl restart wg-quick@wgcf && ShowWGCF && WGCFmenu && back
 fi;;
 2 ) WARPup;;
-3 ) wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/kkkyg/warp-plus/wp.py && python3 wp.py;;
+3 ) wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/ygkkkyb/warp-plus/wp.py && python3 wp.py;;
 4 )
-wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/kkkyg/warp-plus/wp.py
+wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/ygkkkyb/warp-plus/wp.py
 sed -i "27 s/[(][^)]*[)]//g" wp.py
 readp "客户端配置ID(36个字符)：" ID
 sed -i "27 s/input/'$ID'/" wp.py
 readp "设置screen窗口名称，回车默认名称为'wp'：" wpp
 [[ -z $wpp ]] && wpp='wp'
 screen -UdmS $wpp bash -c '/usr/bin/python3 /root/wp.py' && back;;
-5 ) wget -N https://raw.githubusercontents.com/kkkyg/screen-script/main/screen.sh && bash screen.sh && back;;
+5 ) wget -N https://raw.githubusercontents.com/ygkkkyb/screen-script/main/screen.sh && bash screen.sh && back;;
 0 ) bash CFwarp.sh
 esac
 }
