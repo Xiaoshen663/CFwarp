@@ -32,7 +32,7 @@ release="Ubuntu"
 elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
 release="Centos"
 else 
-red "不支持你当前系统，请选择使用Ubuntu,Debian,Centos系统。请向作者反馈 https://github.com/kkkyg/CFwarp/issues" && rm -f CFwarp.sh && exit 1
+red "不支持你当前系统，请选择使用Ubuntu,Debian,Centos系统。请向作者反馈 https://github.com/ygkkkyb/CFwarp/issues" && rm -f CFwarp.sh && exit 1
 fi
 vsid=`grep -i version_id /etc/os-release | cut -d \" -f2 | cut -d . -f1`
 sys(){
@@ -339,7 +339,7 @@ WGCFmenu;S5menu
 }
 
 menu(){
-green "kkkyg-CFwarp脚本快捷键使用指南"
+green "ygkkkyb-CFwarp脚本快捷键使用指南"
 green "注意：进入实时显示Screen状态后，退出当前Screen界面：Ctrl+a+d  终止当前Screen运行：Ctrl+c "
 yellow "------------------------------------------"
 blue "cf wd     : Wgcf-warp临时关闭"
@@ -388,7 +388,7 @@ green "失败建议如下："
 yellow "1、强烈建议使用官方源升级系统及内核加速！如已使用第三方源及内核加速，请务必更新到最新版，或重置为官方源"
 yellow "2、部分VPS系统极度精简，相关依赖需自行安装后再尝试"
 yellow "3、查看https://www.cloudflarestatus.com/,你当前VPS就近区域可能处于黄色的【Re-routed】状态"
-yellow "有疑问请向作者反馈 https://github.com/kkkyg/CFwarp/issues"
+yellow "有疑问请向作者反馈 https://github.com/ygkkkyb/CFwarp/issues"
 exit 0
 else 
 screen -d >/dev/null 2>&1
@@ -489,10 +489,10 @@ apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install w
 elif [[ $release = Ubuntu ]]; then
 apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install wireguard-tools --no-install-recommends -y			
 fi
-[[ $cpu = AMD64 ]] && wget -N https://cdn.jsdelivr.net/gh/kkkyg/CFwarp/wgcf_2.2.14_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
-[[ $cpu = ARM64 ]] && wget -N https://cdn.jsdelivr.net/gh/kkkyg/CFwarp/wgcf_2.2.14_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
+[[ $cpu = AMD64 ]] && wget -N https://cdn.jsdelivr.net/gh/ygkkkyb/CFwarp/wgcf_2.2.14_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
+[[ $cpu = ARM64 ]] && wget -N https://cdn.jsdelivr.net/gh/ygkkkyb/CFwarp/wgcf_2.2.14_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
 if [[ $main -lt 5 || $minor -lt 6 ]] || [[ $vi =~ lxc|openvz ]]; then
-[[ -e /usr/bin/wireguard-go ]] || wget -N https://cdn.jsdelivr.net/gh/kkkyg/CFwarp/wireguard-go -O /usr/bin/wireguard-go && chmod +x /usr/bin/wireguard-go
+[[ -e /usr/bin/wireguard-go ]] || wget -N https://cdn.jsdelivr.net/gh/ygkkkyb/CFwarp/wireguard-go -O /usr/bin/wireguard-go && chmod +x /usr/bin/wireguard-go
 fi
 echo | wgcf register
 until [[ -e wgcf-account.toml ]]
@@ -729,7 +729,7 @@ case "$cd" in
 1 )
 [[ -e /root/WARP-CR.sh || -e /root/WARP-CP.sh ]] && yellow "经检测，你正在使用其他刷IP功能，请关闭它后再执行" && REnfwarp
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://raw.githubusercontents.com/kkkyg/Netflix-WARP/main/check.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/ygkkkyb/Netflix-WARP/main/check.sh
 readp "输入国家区域简称（例：新加坡，输入大写SG;美国，输入大写US）:" gj
 [[ -n $gj ]] && sed -i "s/dd/$gj/g" check.sh || (sed -i "s/dd/\$region/g" check.sh && green "当前设置WARP默认随机分配的国家区域: $g4 ")
 readp "已是奈飞IP或者指定IP区域时，重新检测间隔时间（回车默认45秒）,请输入间隔时间（例：50秒，输入50）:" stop
@@ -744,7 +744,7 @@ back;;
 2 )
 [[ -e /root/WARP-CP.sh || -e /root/check.sh ]] && yellow "经检测，你正在使用其他刷IP功能，请关闭它后再执行" && REnfwarp
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://raw.githubusercontents.com/kkkyg/WARP-CR/main/WARP-CR.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/ygkkkyb/WARP-CR/main/WARP-CR.sh
 readp "输入国家区域简称（例：新加坡，输入大写SG;美国，输入大写US）:" gj
 [[ -n $gj ]] && sed -i "s/dd4/$gj/g" WARP-CR.sh || (sed -i "s/dd4/\$eg4/g" WARP-CR.sh && green "IPV4当前设置WARP默认分配的国家区域: $g4 ")
 [[ -n $gj ]] && sed -i "s/dd6/$gj/g" WARP-CR.sh || (sed -i "s/dd6/\$eg6/g" WARP-CR.sh && green "IPV6当前设置WARP默认分配的国家区域: $g6 ")
@@ -763,7 +763,7 @@ back;;
 wgcfv4=$(curl -s4m6 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
 [[ ! $wgcfv4 =~ on|plus ]] && yellow "当前Wgcf-IPV4未开启" && bash CFwarp.sh
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://raw.githubusercontents.com/kkkyg/WARP-CP/main/WARP-CP.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/ygkkkyb/WARP-CP/main/WARP-CP.sh
 readp "输入WARP-IPV4的第二段.第三段的IP段（例：8.45.46.123 ， 输入 45.46 ）:" gj
 [[ -n $gj ]] && sed -i "s/ipd/$gj/g" WARP-CP.sh || (sed -i "s/ipd/\$v4d/g" WARP-CP.sh && green "未输入，使用当前WARP默认IP段$(curl -s4m3 https://ip.gs -k | awk -F '.' '{print $2"."$3}')")
 readp "已刷到设置的IP段时，重新检测间隔时间（回车默认60秒）,请输入间隔时间（例：50秒，输入50）:" stop
@@ -890,8 +890,8 @@ echo -e "${bblue} ░██ ██       ${plain} ░██ ██        ░█
 echo -e "${bblue} ░██ ░${plain}██       ░██ ░██       ░██ ░██          ░${red}██         ░██    ░░██${plain}"
 echo -e "${bblue} ░${plain}██  ░░██     ░██  ░░██     ░██  ░░${red}██        ░██          ░██ ██ ██${plain} "
 green "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
-white "甬哥Github项目  ：github.com/kkkyg"
-white "甬哥blogger博客 ：kkkyg.blogspot.com"
+white "甬哥Github项目  ：github.com/ygkkkyb"
+white "甬哥blogger博客 ：ygkkk.blogspot.com"
 white "甬哥YouTube频道 ：www.youtube.com/c/甬哥侃侃侃kkkyg"
 yellow "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 bblue " WARP-WGCF/SOCKS5安装脚本：2022.3.24更新 Beta 8 版本"  
